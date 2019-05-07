@@ -5,11 +5,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kudo.devops.model.Participante;
 import com.kudo.devops.participante.ParticipanteInterface;
+import com.kudo.devops.participante.ParticipanteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @RestController
 @RequestMapping("/devops")
@@ -17,48 +21,35 @@ import java.util.Optional;
 public class ParticipanteController {
 	
 	@Autowired
-	ParticipanteInterface participanteInterface;
+	ParticipanteService Iparticipante;
 	
 	@GetMapping("/obtenerTodosParticipantes")
 	public List<Participante> obtenerParticipantes(){
-		return participanteInterface.findAll();
+		return Iparticipante.findAll();
 	}
 	
 	@GetMapping("/obtenerParticipanteEstado/{estado}")
 	public List<Participante> obtenerParticipantesEstado(@PathVariable(value="estado") int estado){
-		return participanteInterface.findByEstado(estado);
+		return Iparticipante.findByEstado(estado);
 	}
 	
 	@GetMapping("/obtenerParticipanteId/{id}")
 	public Participante obtenerParticipanteId(@PathVariable(value="id") Long id){
-		Optional<Participante> optionalEntity =  participanteInterface.findById(id);
-		Participante participanteInterno = optionalEntity.get();
-		return participanteInterno;
+		Participante participante =  Iparticipante.obtenerParticipanteId(id);
+		return participante;
 	}
 	
 	@PostMapping("/crearParticipante")
 	public Participante crearParticipante(@RequestBody Participante participante) {
-		return participanteInterface.save(participante);
+		return Iparticipante.crearParticipante(participante);
 	}
 	
 	@PutMapping("/actualizarParticipante/{id}")
 	public Participante actualizarParticipante(@PathVariable(value="id") Long id,
 											@RequestBody Participante participante) {
 		
-	
-		Optional<Participante> optionalEntity =  participanteInterface.findById(id);
-		Participante participanteInterno = optionalEntity.get();
-		participanteInterno.setEstado(participante.getEstado());
-		Participante updateParticipante = participanteInterface.save(participanteInterno);
-		return updateParticipante;
+		return Iparticipante.actualizarParticipante(id, participante);
 	}
-	
-	/*@PutMapping("/actualizarParticipante/{id}")
-	public Participante actualizarParticipante(@PathVariable(value="id")Long parId,
-												@RequestBody Participante detalleParticipante) {
-		Participante participante = participanteInterface.findById(parId);
-		return
-	}*/
 	
 
 }
