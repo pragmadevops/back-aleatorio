@@ -5,37 +5,38 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.kudo.devops.model.Participante;
 
 @Service
 public class ParticipanteService {
 	@Autowired
-	private ParticipanteInterface Iparticipante;
+	private ParticipanteInterface participanteInterface;
 	
 	public List<Participante> findAll(){
-		return Iparticipante.findAll();	
+		return participanteInterface.findAll();	
 	}
 	
 	public List<Participante> findByEstado(int estado){
-		return Iparticipante.findByEstado(estado);
+		return participanteInterface.findByEstado(estado);
 	}
 	
 
 	public Participante obtenerParticipanteId(Long id){
-		Optional<Participante> optionalEntity =  Iparticipante.findById(id);
-		Participante participanteInterno = optionalEntity.get();
-		return participanteInterno;
+		Optional<Participante> optionalEntity =  participanteInterface.findById(id);
+		Participante participante = new Participante();
+		
+		if(optionalEntity.isPresent()) {
+			return optionalEntity.get();
+		}else {
+			return participante;
+		}
+		
+		
 	}
 	
 
 	public Participante crearParticipante(Participante participante) {
-		return Iparticipante.save(participante);
+		return participanteInterface.save(participante);
 	}
 	
 
@@ -44,13 +45,13 @@ public class ParticipanteService {
 	
 		Participante participanteSave  =  obtenerParticipanteId(id);
 		participanteSave.setEstado(participante.getEstado());
-		Participante updateParticipante = crearParticipante(participanteSave);
-		return updateParticipante;
+		return crearParticipante(participanteSave);
 	}
 	
-	public String eliminarParticipante(Participante participante) {
-		Iparticipante.delete(participante);
-		return "";
+	public Participante eliminarParticipante(Long id) {
+		Participante participanteDelete = obtenerParticipanteId(id);
+		participanteInterface.delete(participanteDelete);
+		return participanteDelete;
 	}
 	
 }

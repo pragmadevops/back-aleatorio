@@ -4,16 +4,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kudo.devops.model.Participante;
-import com.kudo.devops.participante.ParticipanteInterface;
 import com.kudo.devops.participante.ParticipanteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @RestController
 @RequestMapping("/devops")
@@ -21,34 +17,45 @@ import javax.persistence.PersistenceContext;
 public class ParticipanteController {
 	
 	@Autowired
-	ParticipanteService Iparticipante;
+	ParticipanteService participanteService;
 	
+	public ParticipanteController(ParticipanteService participanteService2) {
+		this.participanteService = participanteService2;
+	}
+
 	@GetMapping("/obtenerTodosParticipantes")
 	public List<Participante> obtenerParticipantes(){
-		return Iparticipante.findAll();
+		return participanteService.findAll();
 	}
 	
 	@GetMapping("/obtenerParticipanteEstado/{estado}")
 	public List<Participante> obtenerParticipantesEstado(@PathVariable(value="estado") int estado){
-		return Iparticipante.findByEstado(estado);
+		return participanteService.findByEstado(estado);
 	}
 	
 	@GetMapping("/obtenerParticipanteId/{id}")
 	public Participante obtenerParticipanteId(@PathVariable(value="id") Long id){
-		Participante participante =  Iparticipante.obtenerParticipanteId(id);
-		return participante;
+		return participanteService.obtenerParticipanteId(id);
+		
 	}
 	
 	@PostMapping("/crearParticipante")
 	public Participante crearParticipante(@RequestBody Participante participante) {
-		return Iparticipante.crearParticipante(participante);
+		Participante p = participanteService.crearParticipante(participante);
+		p.setId(123456L);	
+		return p;
 	}
 	
 	@PutMapping("/actualizarParticipante/{id}")
 	public Participante actualizarParticipante(@PathVariable(value="id") Long id,
 											@RequestBody Participante participante) {
 		
-		return Iparticipante.actualizarParticipante(id, participante);
+		return participanteService.actualizarParticipante(id, participante);
+	}
+	
+	@DeleteMapping("/eliminarParticipante/{id}")
+	public Participante eliminarParticipante(@PathVariable(value="id") Long id) {
+		return participanteService.eliminarParticipante(id);
 	}
 	
 
