@@ -1,4 +1,4 @@
-package com.kudo.devops.participante;
+package com.kudo.devops.service;
 
 import java.util.List;
 import java.util.Optional;

@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kudo.devops.model.Participante;
-import com.kudo.devops.participante.ParticipanteService;
+import com.kudo.devops.service.ParticipanteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
