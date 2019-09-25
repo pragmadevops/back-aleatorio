@@ -45,8 +45,21 @@ public class ParticipanteTest {
 		assertEquals(2, participanteService.findAll().size());
 	}
 	
-	
 	@Test
+	public void obtenerParticipanteEstadoControllerTest() 
+	{
+		Mockito.when(participanteInterface.findByEstado(ESTADO)).thenReturn(Stream.
+					of(new Participante(ID, NOMBRE, ESTADO),new Participante(ID2, NOMBRE2, ESTADO)).collect(Collectors.toList()));
+		
+		List<Participante> participantesActivos = participanteService.findByEstado(ESTADO);
+		
+		for (Participante participante : participantesActivos) {
+			assertEquals(ESTADO, participante.getEstado());
+		}
+	}
+	
+	
+	/*@Test
 	public void crearParticipanteTest() throws Exception {
 
 		Participante participante = new Participante(ID, NOMBRE, ESTADO);
@@ -61,9 +74,9 @@ public class ParticipanteTest {
 		
 		participanteService.eliminarParticipante(ID);
 		
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void obtenerParticipanteIdTest() throws Exception {
 
 		Participante participante = new Participante(ID, NOMBRE, ESTADO);
@@ -80,7 +93,7 @@ public class ParticipanteTest {
 		
 		participanteService.eliminarParticipante(ID);
 		
-	}
+	}*/
 	
 	@Test
 	public void obtenerParticipanteEstadoTest() throws Exception {
@@ -99,7 +112,7 @@ public class ParticipanteTest {
 		}
 	}
 	
-	@Test
+	/*@Test
 	public void actualizarParticipanteTest() throws Exception {
 
 		Participante participante = new Participante(ID, NOMBRE, ESTADO);
@@ -117,7 +130,7 @@ public class ParticipanteTest {
 		
 		participanteService.eliminarParticipante(ID);
 		
-	}
+	}*/
 	
 	@Test
 	public void obtenerTodosTest() throws Exception {
