@@ -4,18 +4,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kudo.devops.KudoDevOpsApplication;
-import com.kudo.devops.controller.ParticipanteController;
 import com.kudo.devops.model.Participante;
+import com.kudo.devops.participante.ParticipanteInterface;
 import com.kudo.devops.participante.ParticipanteService;
 
 @RunWith(SpringRunner.class)
@@ -23,45 +25,32 @@ import com.kudo.devops.participante.ParticipanteService;
 public class ParticipanteTest {
 	
 	private static final long ID = 123456L;
-	private static final String NOMBRE = "Test Name";
+	private static final String NOMBRE = "Pedro Pruebas";
+	private static final long ID2 = 1234567L;
+	private static final String NOMBRE2 = "Juana Pruebas";
+	private static final int ESTADO = 1;
 	
-	//@Autowired
+	@Autowired
 	private ParticipanteService participanteService;
-	private ParticipanteController participanteController;
+	@MockBean
+	private ParticipanteInterface participanteInterface;
 	
-	@Before
-	public void setUp() {
-		participanteService = Mockito.mock(ParticipanteService.class);
-		participanteController = new ParticipanteController(participanteService);
-	}
 	
 	@Test
-	public void testCrearParticipanteController() throws Exception{
+	public void crearParticipanteControllerTest() 
+	{
+		Mockito.when(participanteInterface.findAll()).thenReturn(Stream.
+					of(new Participante(ID, NOMBRE, ESTADO),new Participante(ID2, NOMBRE2, ESTADO)).collect(Collectors.toList()));
 		
-		Participante participante = new Participante();
-		
-		participante.setEstado(1);
-		participante.setId(ID);
-		participante.setNombre(NOMBRE);
-		
-		Mockito.when(participanteService.crearParticipante(participante)).thenReturn(participante);
-		
-		assertNotNull(participante);
-		assertEquals(new Long(ID), participante.getId());
-		assertEquals(1, participante.getEstado());
-		assertEquals(NOMBRE, participante.getNombre());
+		assertEquals(2, participanteService.findAll().size());
 	}
 	
 	
 	@Test
-	public void testCrearParticipante() throws Exception {
+	public void crearParticipanteTest() throws Exception {
 
-		Participante participante = new Participante();
+		Participante participante = new Participante(ID, NOMBRE, ESTADO);
 		Participante participanteReturn;
-		
-		participante.setEstado(1);
-		participante.setId(ID);
-		participante.setNombre(NOMBRE);
 		
 		participanteReturn = participanteService.crearParticipante(participante);
 		
@@ -75,13 +64,10 @@ public class ParticipanteTest {
 	}
 	
 	@Test
-	public void testObtenerParticipanteId() throws Exception {
+	public void obtenerParticipanteIdTest() throws Exception {
 
-		Participante participante = new Participante();
+		Participante participante = new Participante(ID, NOMBRE, ESTADO);
 		Participante participanteConsultado;
-		participante.setEstado(1);
-		participante.setId(ID);
-		participante.setNombre(NOMBRE);
 		
 		participanteService.crearParticipante(participante);
 		
@@ -89,7 +75,7 @@ public class ParticipanteTest {
 		
 		assertNotNull(participanteConsultado);
 		assertEquals(new Long(ID), participanteConsultado.getId());
-		assertEquals(1, participanteConsultado.getEstado());
+		assertEquals(ESTADO, participanteConsultado.getEstado());
 		assertEquals(NOMBRE, participanteConsultado.getNombre());
 		
 		participanteService.eliminarParticipante(ID);
@@ -97,13 +83,13 @@ public class ParticipanteTest {
 	}
 	
 	@Test
-	public void testObtenerParticipanteEstado() throws Exception {
+	public void obtenerParticipanteEstadoTest() throws Exception {
 
 		
-		List<Participante> participantesActivos = participanteService.findByEstado(1);
+		List<Participante> participantesActivos = participanteService.findByEstado(ESTADO);
 		
 		for (Participante participante : participantesActivos) {
-			assertEquals(1, participante.getEstado());
+			assertEquals(ESTADO, participante.getEstado());
 		}
 		
 		List<Participante> participantesInactivos = participanteService.findByEstado(0);
@@ -114,14 +100,11 @@ public class ParticipanteTest {
 	}
 	
 	@Test
-	public void testActualizarParticipante() throws Exception {
+	public void actualizarParticipanteTest() throws Exception {
 
-		Participante participante = new Participante();
+		Participante participante = new Participante(ID, NOMBRE, ESTADO);
 		Participante participanteReturn;
 		
-		participante.setEstado(1);
-		participante.setId(ID);
-		participante.setNombre(NOMBRE);
 		
 		participanteService.crearParticipante(participante);
 		participante.setEstado(0);
@@ -137,7 +120,7 @@ public class ParticipanteTest {
 	}
 	
 	@Test
-	public void testObtenerTodos() throws Exception {
+	public void obtenerTodosTest() throws Exception {
 
 		List<Participante> participantesActivos = null;
 		

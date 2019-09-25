@@ -8,6 +8,18 @@ import javax.persistence.*;
 
 public class Participante {
 	
+	public Participante(Long id, String nombre, int estado) {
+		this.estado = estado;
+		this.id = id;
+		this.nombre = nombre;
+	}
+	
+	public Participante() {
+		this.estado = 1;
+		this.id = 123456L;
+		this.nombre = "defaultPart";
+	}
+	
 	@Column
 	private String nombre;
 	@Id
