@@ -1,7 +1,6 @@
 package com.kudoDevOps.kudoDevOps;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,12 +11,11 @@ import java.util.stream.Stream;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.google.common.base.Verify;
+
 import com.kudo.devops.KudoDevOpsApplication;
 import com.kudo.devops.model.Participante;
 import com.kudo.devops.service.ParticipanteInterface;
@@ -25,7 +23,7 @@ import com.kudo.devops.service.ParticipanteService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes =KudoDevOpsApplication.class)
-public class ParticipanteInterfaceTest {
+public class TestParticipanteInterface {
 	
 	private static final long ID = 123456L;
 	private static final String NOMBRE = "Pedro Pruebas";
