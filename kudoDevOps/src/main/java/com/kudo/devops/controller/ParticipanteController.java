@@ -19,18 +19,14 @@ public class ParticipanteController {
 	@Autowired
 	ParticipanteService participanteService;
 	
-	public ParticipanteController(ParticipanteService participanteService2) {
-		this.participanteService = participanteService2;
-	}
-
 	@GetMapping("/obtenerTodosParticipantes")
 	public List<Participante> obtenerParticipantes(){
-		return participanteService.findAll();
+		return participanteService.obtenerTodos();
 	}
 	
 	@GetMapping("/obtenerParticipanteEstado/{estado}")
 	public List<Participante> obtenerParticipantesEstado(@PathVariable(value="estado") int estado){
-		return participanteService.findByEstado(estado);
+		return participanteService.obtenerParticipanteEstado(estado);
 	}
 	
 	@GetMapping("/obtenerParticipanteId/{id}")
@@ -49,7 +45,6 @@ public class ParticipanteController {
 	@PutMapping("/actualizarParticipante/{id}")
 	public Participante actualizarParticipante(@PathVariable(value="id") Long id,
 											@RequestBody Participante participante) {
-		
 		return participanteService.actualizarParticipante(id, participante);
 	}
 	

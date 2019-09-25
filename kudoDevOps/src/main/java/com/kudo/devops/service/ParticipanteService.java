@@ -12,11 +12,11 @@ public class ParticipanteService {
 	@Autowired
 	private ParticipanteInterface participanteInterface;
 	
-	public List<Participante> findAll(){
+	public List<Participante> obtenerTodos(){
 		return participanteInterface.findAll();	
 	}
 	
-	public List<Participante> findByEstado(int estado){
+	public List<Participante> obtenerParticipanteEstado(int estado){
 		return participanteInterface.findByEstado(estado);
 	}
 	
@@ -30,8 +30,6 @@ public class ParticipanteService {
 		}else {
 			return participante;
 		}
-		
-		
 	}
 	
 
@@ -42,7 +40,6 @@ public class ParticipanteService {
 
 	public Participante actualizarParticipante(Long id,Participante participante) {
 		
-	
 		Participante participanteSave  =  obtenerParticipanteId(id);
 		participanteSave.setEstado(participante.getEstado());
 		return crearParticipante(participanteSave);
