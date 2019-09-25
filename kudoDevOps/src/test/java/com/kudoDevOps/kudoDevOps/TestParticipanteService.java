@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kudo.devops.KudoDevOpsApplication;
 import com.kudo.devops.model.Participante;
-import com.kudo.devops.service.ParticipanteInterface;
 import com.kudo.devops.service.ParticipanteService;
 
 @RunWith(SpringRunner.class)
