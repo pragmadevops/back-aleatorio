@@ -31,9 +31,6 @@ Ir al paquete src/main/resources y poner la ruta de data source segun se requier
 Instalacion de Docker 
 ```
 ```
-Ubicarse en la carpeta donde esta ubicado el DockerFile
-```
-```
 Crear DB importando el archivo de base de datos, se recomienda usar Xammp 3.2.2
 ```
 ```
