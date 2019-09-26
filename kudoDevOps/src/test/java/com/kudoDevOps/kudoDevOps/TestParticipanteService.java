@@ -20,7 +20,7 @@ import com.kudo.devops.model.Participante;
 import com.kudo.devops.service.ParticipanteService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes =KudoDevOpsApplication.class)
+@SpringBootTest(classes = KudoDevOpsApplication.class)
 public class TestParticipanteService {
 	
 	private static final long ID = 123456L;
