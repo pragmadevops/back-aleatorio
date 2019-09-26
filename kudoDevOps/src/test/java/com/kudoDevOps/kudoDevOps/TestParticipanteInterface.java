@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kudo.devops.KudoDevOpsApplication;
 import com.kudo.devops.model.Participante;
-import com.kudo.devops.service.ParticipanteInterface;
+import com.kudo.devops.service.ParticipanteInterface;   
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes =KudoDevOpsApplication.class)
