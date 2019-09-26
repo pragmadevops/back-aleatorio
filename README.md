@@ -15,7 +15,7 @@ Aplicativo encargado de realizar CRUD de particpantes expuesto en un API Rest.
 ## Prerequisitos
 * Ambiente desarrollo:
 ```
-Docker 
+Instalacion de Docker 
 ```
 ```
 Crear DB importando el archivo de base de datos, se recomienda usar Xammp 3.2.2
@@ -28,7 +28,7 @@ Ir al paquete src/main/resources y poner la ruta de data source segun se requier
 ```
 * Ambiente pruebas:
 ```
-Docker 
+Instalacion de Docker 
 ```
 ```
 Crear DB importando el archivo de base de datos, se recomienda usar Xammp 3.2.2
