@@ -1,11 +1,10 @@
 package com.kudoDevOps.kudoDevOps;
 
 
-import org.hamcrest.Matchers;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -15,8 +14,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.kudo.devops.KudoDevOpsApplication;
 import com.kudo.devops.controller.ParticipanteController;
+import com.kudo.devops.model.Participante;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,9 +37,43 @@ public class TestParticipanteController {
 	}
 	
 	@Test
-	public void obtenerTodosParticipantes() throws Exception {	
+	public void obtenerTodosParticipantesControllerTest() throws Exception {	
 		mockMvcCliente.perform(
 				MockMvcRequestBuilders.get("/devops/obtenerTodosParticipantes").accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void obtenerParticipantesEstadoControllerTest() throws Exception {	
+		mockMvcCliente.perform(
+				MockMvcRequestBuilders.get("/devops/obtenerParticipanteEstado/1").accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void obtenerParticipanteIdControllerTest() throws Exception {	
+		mockMvcCliente.perform(
+				MockMvcRequestBuilders.get("/devops/obtenerParticipanteId/123456").accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void crearParticipanteControllerTest() throws Exception {
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		Participante par = new Participante();
+		String json = ow.writeValueAsString(par);
+		mockMvcCliente.perform(
+				MockMvcRequestBuilders.post("/devops/crearParticipante")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(json)
+				.accept(MediaType.APPLICATION_JSON_VALUE))
+				.andExpect(MockMvcResultMatchers.status().isOk());
+	}
+	
+	@Test
+	public void eliminarParticipanteIdControllerTest() throws Exception {	
+		mockMvcCliente.perform(
+				MockMvcRequestBuilders.delete("/devops/eliminarParticipante/123456").accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 }

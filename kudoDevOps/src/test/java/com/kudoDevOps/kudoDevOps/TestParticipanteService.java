@@ -43,7 +43,7 @@ public class TestParticipanteService {
 	}
 	
 	@Test
-	public void obtenerParticipanteEstadoTest(){
+	public void obtenerParticipantesEstadoTest(){
 		
 		Mockito.when(participanteService.obtenerParticipanteEstado(ESTADO)).thenReturn(Stream.
 					of(new Participante(ID, NOMBRE, ESTADO),new Participante(ID2, NOMBRE2, ESTADO)).collect(Collectors.toList()));
