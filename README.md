@@ -39,9 +39,6 @@ Importar el proyecto como un maven project, se recomienda usar eclipse
 ```
 Ir al paquete src/main/resources y poner la ruta de data source segun se requiera
 ```
-```
-Ir al paquete src/main/resources y poner la ruta de data source segun se requiera
-```
 
 ## Instalación
 Ubicarse en la carpeta raiz del proyecto y ejecutar el siguiente comando por consola
