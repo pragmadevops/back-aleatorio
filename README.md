@@ -49,7 +49,9 @@ mvn install
 agregar el .jar generado a la carpeta raiz donde se va  ejecutar el DockerFile
 ```
 ## Ejecución
-
+```
+Ubicarse en la carpeta donde esta ubicado el DockerFile
+```
 ```
 Para crear la imagen correr por consola el comando docker build -t kudoimage .
 ```
