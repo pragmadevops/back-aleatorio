@@ -1,4 +1,4 @@
-package com.kudo.devops.model;
+package com.practica.devops.model;
 
 
 import javax.persistence.*;

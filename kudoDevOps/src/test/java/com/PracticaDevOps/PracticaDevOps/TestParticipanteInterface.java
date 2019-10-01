@@ -1,4 +1,4 @@
-package com.kudoDevOps.kudoDevOps;
+package com.PracticaDevOps.PracticaDevOps;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,13 +15,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
-import com.kudo.devops.KudoDevOpsApplication;
-import com.kudo.devops.model.Participante;
-import com.kudo.devops.service.ParticipanteInterface;   
+import com.practica.devops.PracticaDevOpsApplication;
+import com.practica.devops.model.Participante;
+import com.practica.devops.service.ParticipanteInterface;   
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes =KudoDevOpsApplication.class)
+@SpringBootTest(classes =PracticaDevOpsApplication.class)
 public class TestParticipanteInterface {
 	
 	private static final long ID = 123456L;

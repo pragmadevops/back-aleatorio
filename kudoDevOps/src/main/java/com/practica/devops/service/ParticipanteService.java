@@ -1,11 +1,12 @@
-package com.kudo.devops.service;
+package com.practica.devops.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.kudo.devops.model.Participante;
+
+import com.practica.devops.model.Participante;
 
 @Service
 public class ParticipanteService {

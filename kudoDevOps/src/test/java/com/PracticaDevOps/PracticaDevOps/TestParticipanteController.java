@@ -1,4 +1,4 @@
-package com.kudoDevOps.kudoDevOps;
+package com.PracticaDevOps.PracticaDevOps;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +14,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.kudo.devops.KudoDevOpsApplication;
-import com.kudo.devops.controller.ParticipanteController;
-import com.kudo.devops.model.Participante;
+import com.practica.devops.PracticaDevOpsApplication;
+import com.practica.devops.controller.ParticipanteController;
+import com.practica.devops.model.Participante;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = KudoDevOpsApplication.class)
+@SpringBootTest(classes = PracticaDevOpsApplication.class)
 public class TestParticipanteController {
 	
 	
