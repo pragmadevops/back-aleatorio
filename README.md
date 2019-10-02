@@ -46,6 +46,15 @@ crear variable de entorno de nombre HOST
 ```
 HOST = 'valor sera el host que aloja la base de datos'
 ```
+```
+Importar proyecto a IDE de preferencia
+```
+Si se desea cambiar el "profile (dev, prod)" se debe cambiar en el .yml
+```
+spring:
+  profiles:
+    active: prod ó dev
+```
 Ubicarse en la carpeta raiz del proyecto y ejecutar el siguiente comando por consola
 
 ```
