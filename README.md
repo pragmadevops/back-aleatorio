@@ -58,3 +58,7 @@ Para crear la imagen correr por consola el comando docker build -t kudoimage .
 ```
 Para crear el contenedor e iniciarlo corree por consola el comando docker run -it -p 8090:8090 --name kudoapp kudoimage
 ```
+## Guia pruebas unitarias usando Mocks
+```
+[a link](https://drive.google.com/open?id=12XvWdjHzYEiFR9Ezb6YFfu2ztcxZGYoi)
+```
