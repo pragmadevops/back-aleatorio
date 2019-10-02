@@ -1,7 +1,7 @@
 ## practica pragma devops
 spring:
   profiles:
-    active: prod
+    active: dev
 ---
 spring:
   profiles: dev
