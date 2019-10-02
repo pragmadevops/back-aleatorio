@@ -65,6 +65,7 @@ Para crear la imagen correr por consola el comando docker build -t kudoimage .
 Para crear el contenedor e iniciarlo corree por consola el comando docker run -it -p 8090:8090 --name kudoapp kudoimage
 ```
 Para correr el aplicativo se debe ejecutar el comando en consola con el respectivo "profile" (dev, test, ...)
+el "profile" por defecto es prod
 ```
 $java -jar -Dspring.profiles.active=[profile] kudoDevOps-0.0.1-SNAPSHOT.jar
 ```
