@@ -64,6 +64,13 @@ mvn install
 agregar el .jar generado a la carpeta raiz donde se va  ejecutar el DockerFile
 ```
 ## Ejecución
+
+Para ejecucion sin Docker con el respectivo "profile" (prod, dev), 
+ubicado en la carpeta target del proyecto lanzar el comando
+```
+$java -jar -Dspring.profiles.active=[profile] kudoDevOps-0.0.1-SNAPSHOT.jar
+```
+Para ejecucion con Docker
 ```
 Ubicarse en la carpeta donde esta ubicado el DockerFile
 ```
