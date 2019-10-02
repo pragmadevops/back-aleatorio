@@ -41,7 +41,13 @@ Ir al paquete src/main/resources y poner la ruta de data source segun se requier
 ```
 
 ## Instalación
+
+crear variable de entorno de nombre HOST
+```
+HOST = 'valor sera el host que aloja la base de datos'
+```
 Ubicarse en la carpeta raiz del proyecto y ejecutar el siguiente comando por consola
+
 ```
 mvn install
 ```
