@@ -61,9 +61,9 @@ Ubicarse en la carpeta donde esta ubicado el DockerFile
 ```
 Para crear la imagen correr por consola el comando docker build -t kudoimage .
 ```
-Para crear el contenedor e iniciarlo correr por consola el comando 
+Para crear el contenedor e iniciarlo con perfil prod correr por consola el comando 
 ```
-docker run -it -p 8090:8090 -e enviroment=profile --name kudoapp kudoimage
+docker run -it -p 8090:8090 -e enviroment=prod --name kudoapp kudoimage
 ```
 ## Guia pruebas unitarias usando Mocks
 
