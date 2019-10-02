@@ -1,4 +1,4 @@
-package com.PracticaDevOps.PracticaDevOps;
+package com.practica.devops.test;
 
 import org.junit.Before;
 import org.junit.Test;

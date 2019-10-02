@@ -1,4 +1,4 @@
-package com.PracticaDevOps.PracticaDevOps;
+package com.practica.devops.test;
 
 import static org.junit.Assert.assertEquals;
 
